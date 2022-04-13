@@ -7,9 +7,13 @@ import (
 
 func main() {
 	s := "Gopher Wiz"
-	x := strings.IndexByte(s, 'G')
-	y := strings.IndexByte(s, 'o')
-	z := strings.IndexByte(s, 'g')
 
-	fmt.Printf("%d\n%d\n%d", x, y, z)
+	x := strings.IndexByte(s, 'G')
+	fmt.Println("x:", x)
+
+	y := strings.IndexByte(s, 'o')
+	fmt.Println("y:", y)
+
+	z := strings.IndexByte(s, 'g')
+	fmt.Println("z:", z)
 }

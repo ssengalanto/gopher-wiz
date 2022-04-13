@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	c := strings.Clone("Gopher Wiz")
-	fmt.Println(c)
+	x := strings.Clone("Gopher Wiz")
+	fmt.Println("x:", x)
 }

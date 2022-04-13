@@ -8,9 +8,10 @@ import (
 
 func main() {
 	s := "  Gopher🚀Wiz😱!😖"
-	x := func(c rune) bool {
+	f := func(c rune) bool {
 		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
 	}
 
-	fmt.Printf("%#v\n", strings.FieldsFunc(s, x))
+	x := strings.FieldsFunc(s, f)
+	fmt.Printf("x: %#v\n", x)
 }

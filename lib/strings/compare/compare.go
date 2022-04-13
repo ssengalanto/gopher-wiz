@@ -9,7 +9,15 @@ func main() {
 	a := "Gopher"
 	b := "Wiz"
 
-	fmt.Println("a < b:", strings.Compare(a, b))
-	fmt.Println("a == a:", strings.Compare(a, a))
-	fmt.Println("b > a:", strings.Compare(b, a))
+	// a < b
+	x := strings.Compare(a, b)
+	fmt.Println("x:", x)
+
+	// a == b
+	y := strings.Compare(a, a)
+	fmt.Println("y:", y)
+
+	// a > b
+	z := strings.Compare(b, a)
+	fmt.Println("z:", z)
 }

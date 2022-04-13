@@ -7,8 +7,11 @@ import (
 
 func main() {
 	x := strings.Count("Gopher Wiz", "Go")
-	y := strings.Count("Go Programming Language", "a")
-	z := strings.Count("empty", "")
+	fmt.Println("x:", x)
 
-	fmt.Printf("%d\n%d\n%d", x, y, z)
+	y := strings.Count("Go Programming Language", "a")
+	fmt.Println("y:", y)
+
+	z := strings.Count("empty", "")
+	fmt.Println("z:", z)
 }

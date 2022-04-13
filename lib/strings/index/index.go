@@ -7,9 +7,13 @@ import (
 
 func main() {
 	s := "Gopher Wiz"
-	x := strings.Index(s, "Go")
-	y := strings.Index(s, "Wiz")
-	z := strings.Index(s, "go")
 
-	fmt.Printf("%d\n%d\n%d", x, y, z)
+	x := strings.Index(s, "Go")
+	fmt.Println("x:", x)
+
+	y := strings.Index(s, "Wiz")
+	fmt.Println("y:", y)
+
+	z := strings.Index(s, "go")
+	fmt.Println("z:", z)
 }

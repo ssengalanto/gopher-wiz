@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	x := strings.TrimLeft("-_Gopher Wiz_-", "-_")
+	x := strings.TrimRight("-_Gopher Wiz_-", "-_")
 	fmt.Println("x:", x)
 }

@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 /*
-	Channel owner is responsible for the ff:
+	Channel owner is responsible for the ff: (also known as lexical confinement)
 	1. Instantiate the channel
 	2. Perform writes, or pass ownership to another goroutine
 	3. Close the channel

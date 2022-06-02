@@ -5,3 +5,14 @@ linters:
     - interfacer #deprecated
     - maligned #deprecated
     - scopelint #deprecated
+    - exhaustivestruct #deprecated
+    - bodyclose #deprecated
+    - contextcheck #deprecated
+    - nilerr #deprecated
+    - noctx #deprecated
+    - rowserrcheck #deprecated
+    - sqlclosecheck #deprecated
+    - structcheck #deprecated
+    - tparallel #deprecated
+    - unparam #deprecated
+    - wastedassign #deprecated

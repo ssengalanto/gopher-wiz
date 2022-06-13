@@ -2,17 +2,29 @@ package pokemon
 
 import "fmt"
 
-type IPokemonFactory interface {
-	MakeWaterPokemon(name string) IPokemon
-	MakeGhostPokemon(name string) IPokemon
+type PokemonFactory interface {
+	RegisterFactory(name string, pokemon Pokemon)
+	CreatePokemon(name string) (Pokemon, error)
 }
 
-func CreatePokemon(pType string) (IPokemonFactory, error) {
-	if pType == "water" {
-		return &WaterPokemon{}, nil
+type pokemonFactory struct {
+	factories map[string]Pokemon
+}
+
+func NewPokemonFactory() PokemonFactory {
+	return &pokemonFactory{make(map[string]Pokemon)}
+}
+
+func (p *pokemonFactory) RegisterFactory(name string, pokemon Pokemon) {
+	p.factories[name] = pokemon
+}
+
+func (p *pokemonFactory) CreatePokemon(name string) (Pokemon, error) {
+	val, ok := p.factories[name]
+
+	if !ok {
+		return nil, fmt.Errorf("invalid payload name: %s", name)
 	}
-	if pType == "ghost" {
-		return &GhostPokemon{}, nil
-	}
-	return nil, fmt.Errorf("wrong pokemon type passed")
+
+	return val, nil
 }

@@ -7,17 +7,24 @@ import (
 )
 
 func main() {
-	waterPokemon, _ := pokemon.CreatePokemon("water")
-	ghostPokemon, _ := pokemon.CreatePokemon("ghost")
+	factory := pokemon.NewPokemonFactory()
+	factory.RegisterFactory("dragapult", pokemon.NewDragapult())
+	factory.RegisterFactory("greninja", pokemon.NewGreninja())
 
-	greninja := waterPokemon.MakeWaterPokemon("Greninja")
-	dragapult := ghostPokemon.MakeGhostPokemon("Dragapult")
-
-	printPokemonDetails(greninja)
+	dragapult, err := factory.CreatePokemon("dragapult")
+	if err != nil {
+		panic(err)
+	}
 	printPokemonDetails(dragapult)
+
+	greninja, err := factory.CreatePokemon("greninja")
+	if err != nil {
+		return
+	}
+	printPokemonDetails(greninja)
 }
 
-func printPokemonDetails(m pokemon.IPokemon) {
+func printPokemonDetails(m pokemon.Pokemon) {
 	fmt.Printf("Name: %s\n", m.Name())
 	fmt.Printf("Moves: %v\n", strings.Join(m.Moves(), ", "))
 	fmt.Printf("Types: %v\n", strings.Join(m.Types(), ", "))

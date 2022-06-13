@@ -2,30 +2,45 @@ package singleton
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 )
 
-var once sync.Once
+var (
+	once     sync.Once
+	instance *greeter
+)
 
-type singleton struct {
+type Greeter interface {
+	Greet() string
 }
 
-var instance *singleton
-
-func newInstance() *singleton {
-	return &singleton{}
+type greeter struct {
+	greeting string
 }
 
-func Instance() *singleton {
+func create() *greeter {
+	g := &greeter{
+		greeting: fmt.Sprintf("Hello from Greeter - %d", rand.Intn(100)),
+	}
+
+	return g
+}
+
+func New() Greeter {
 	if instance == nil {
 		once.Do(
 			func() {
-				fmt.Println("Creating single instance now.")
-				instance = newInstance()
+				fmt.Println("Creating greeter instance now.")
+				instance = create()
 			})
 	} else {
-		fmt.Println("Single instance already created.")
+		fmt.Println("Greeter instance already created.")
 	}
 
 	return instance
+}
+
+func (g *greeter) Greet() string {
+	return g.greeting
 }

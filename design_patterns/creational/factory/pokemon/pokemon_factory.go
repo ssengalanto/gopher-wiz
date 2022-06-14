@@ -1,29 +1,27 @@
 package pokemon
 
-import "fmt"
-
-type PokemonFactory interface {
-	RegisterFactory(name string, pokemon Pokemon)
+type Factory interface {
 	CreatePokemon(name string) (Pokemon, error)
 }
 
-type pokemonFactory struct {
-	factories map[string]Pokemon
+type factory struct {
 }
 
-func NewPokemonFactory() PokemonFactory {
-	return &pokemonFactory{make(map[string]Pokemon)}
+func NewFactory() Factory {
+	return &factory{}
 }
 
-func (p *pokemonFactory) RegisterFactory(name string, pokemon Pokemon) {
-	p.factories[name] = pokemon
-}
+func (f *factory) CreatePokemon(name string) (Pokemon, error) {
+	var val Pokemon
 
-func (p *pokemonFactory) CreatePokemon(name string) (Pokemon, error) {
-	val, ok := p.factories[name]
+	switch name {
+	case "dragapult":
+		val = newDragapult()
+		break
 
-	if !ok {
-		return nil, fmt.Errorf("invalid payload name: %s", name)
+	case "greninja":
+		val = newGreninja()
+		break
 	}
 
 	return val, nil

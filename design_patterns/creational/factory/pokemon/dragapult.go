@@ -1,16 +1,12 @@
 package pokemon
 
-type Dragapult interface {
+type dragapult struct {
 	Pokemon
 }
 
-type dragapult struct {
-	pokemon
-}
-
-func NewDragapult() Dragapult {
+func newDragapult() Pokemon {
 	return &dragapult{
-		pokemon{
+		&pokemon{
 			name:       "Dragapult",
 			moves:      []string{"Phantom Force", "Protect", "Dragon Darts", "Fly"},
 			types:      []string{"Ghost", "Dragon"},

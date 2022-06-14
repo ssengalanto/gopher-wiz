@@ -7,20 +7,20 @@ import (
 )
 
 func main() {
-	factory := pokemon.NewPokemonFactory()
-	factory.RegisterFactory("dragapult", pokemon.NewDragapult())
-	factory.RegisterFactory("greninja", pokemon.NewGreninja())
+	pokeFactory := pokemon.NewFactory()
 
-	dragapult, err := factory.CreatePokemon("dragapult")
+	dragapult, err := pokeFactory.CreatePokemon("dragapult")
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("--- DRAGAPULT ---")
 	printPokemonDetails(dragapult)
 
-	greninja, err := factory.CreatePokemon("greninja")
+	greninja, err := pokeFactory.CreatePokemon("greninja")
 	if err != nil {
 		return
 	}
+	fmt.Println("--- GRENINJA ---")
 	printPokemonDetails(greninja)
 }
 

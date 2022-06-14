@@ -1,16 +1,12 @@
 package pokemon
 
-type Greninja interface {
+type greninja struct {
 	Pokemon
 }
 
-type greninja struct {
-	pokemon
-}
-
-func NewGreninja() Greninja {
+func newGreninja() Pokemon {
 	return &greninja{
-		pokemon{
+		&pokemon{
 			name:       "Greninja",
 			moves:      []string{"Ice Beam", "Gunk Shot", "U-turn", "Spikes"},
 			types:      []string{"Water", "Dark"},

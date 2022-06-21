@@ -15,6 +15,6 @@ func main() {
 		panic(err)
 	}
 
-	x := d.Hours()
-	fmt.Printf("x: %.2f hrs", x)
+	x := d.Minutes()
+	fmt.Printf("x: %.2f mins", x)
 }
